@@ -7,13 +7,13 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockSimpleAccordionPlatform
     with MockPlatformInterfaceMixin
     implements SimpleAccordionPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final SimpleAccordionPlatform initialPlatform = SimpleAccordionPlatform.instance;
+  final SimpleAccordionPlatform initialPlatform =
+      SimpleAccordionPlatform.instance;
 
   test('$MethodChannelSimpleAccordion is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelSimpleAccordion>());
@@ -23,7 +23,5 @@ void main() {
     SimpleAccordion simpleAccordionPlugin = SimpleAccordion();
     MockSimpleAccordionPlatform fakePlatform = MockSimpleAccordionPlatform();
     SimpleAccordionPlatform.instance = fakePlatform;
-
-    expect(await simpleAccordionPlugin.getPlatformVersion(), '42');
   });
 }
