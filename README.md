@@ -12,19 +12,24 @@
 </tr>
 </table>
 
-**If you like, you can contribute for this [repository](https://github.com/parsadoc/simple_accordion). I'll check all PR that you pushed.**
+**If you like, you can contribute to this [repository](https://github.com/parsadoc/simple_accordion) by making PR.**
 
 ## About Widget
 this is an accordion widget that supports usual types of an accordion widget and easy to use!
+view in [pub.dev](https://pub.dev/packages/simple_accordion)
 
 ### Add to your project
-> flutter pub add  simple_accordion
+```
+flutter pub add simple_accordion
+```
 
-### Just import lib and use it!
-> import  'package:simple_accordion/simple_accordion.dart';
+### Import and use it!
+```
+import 'package:simple_accordion/simple_accordion.dart';
+```
 
 ## How to use
-The main widget is `SimpleAccordion` and it has `children` parameter that you can pass accrodion items to it like below:
+The main widget is `SimpleAccordion` and it has `children` parameter that you can pass accrodion items as `AccordionHeaderItem` array to that like below:
 ```
 SimpleAccordion(
               children: [
@@ -40,3 +45,47 @@ SimpleAccordion(
               ],
 )
 ```
+### Usage Tree
+```
+SimpleAccordion
+	-AccordionHeaderItem
+		-AccordionItem
+		-AccordionItem
+		-AccordionItem
+	-AccordionHeaderItem
+		-AccordionItem
+		...
+```
+
+### Properies of `SimpleAccordion`
+|Parameter|Description|
+|--|--|
+|children| Array of AccordionHeaderItem  |
+|headerColor| set the color of all headers background |
+|itemColor| set the color of all Items background |
+
+
+### Properies of `AccordionHeaderItem`
+|Parameter|Description|
+|--|--|
+|isOpen| initial state of a header (open/close)|
+|title| header title |
+|child| header child as widget |
+|children|array of AccordionItem|
+|headerColor| set the color of header's background |
+|itemColor| set the color of all Items of current header background |
+
+
+
+### Properies of `AccordionItem`
+|Parameter|Description|
+|--|--|
+|title| header title |
+|child| header child as widget |
+|onChange|used to handle CheckBox mode value|
+|checked| initial state of Checkbox|
+|checkColor| set the color of Checkbox |
+|backColor| set the backcolor of item |
+|accrodionItemType| set the mode of item (lable, checkbox). you can place everything in label mode|
+
+all of customizations are available in [example](https://github.com/parsadoc/simple_accordion/blob/dev/example/lib/main.dart) file.
