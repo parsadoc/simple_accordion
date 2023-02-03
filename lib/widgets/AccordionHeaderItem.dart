@@ -14,12 +14,19 @@ class AccordionHeaderItem extends StatefulWidget {
       : assert(title != null || child != null),
         super(key: key);
 
+  /// set default state of header (open/close)
   final bool? isOpen;
   final String? title;
   final Widget? child;
   final List<AccordionItem> children;
+
+  /// set the color of header
   Color? headerColor;
+
+  /// set the color of current header items
   Color? itemColor;
+
+  /// don't use this property, it'll use to another feature
   int index;
   @override
   State<StatefulWidget> createState() => _AccordionHeaderItem();

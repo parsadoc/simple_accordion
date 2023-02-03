@@ -14,19 +14,33 @@ class AccordionItem extends StatefulWidget {
       this.indexGroup = 0,
       this.onTap,
       this.checkColor,
-      this.backColor,
+      this.itemColor,
       this.accrodionItemType = AccrodionItemType.Label})
       : assert(title != null || child != null),
         super(key: key);
   final String? id;
   final String? title;
   final Widget? child;
+
+  /// hanle tap for item
   final Function()? onTap;
+
+  /// hanlde the check state of checkbox item
   final Function(bool, AccordionData?)? onChange;
+
+  /// default state of checkbox item
   final bool checked;
+
+  /// check color of checkbox item
   final Color? checkColor;
-  final Color? backColor;
+
+  /// background color of the item
+  final Color? itemColor;
+
+  /// don't use this property, it'll use to another feature
   int indexGroup;
+
+  /// set the type of item (checkbox, label), lable can be everything
   final AccrodionItemType accrodionItemType;
   @override
   State<StatefulWidget> createState() => _AccordionItem();
@@ -44,7 +58,7 @@ class _AccordionItem extends State<AccordionItem> {
   Widget build(BuildContext context) {
     return widget.child ??
         ListTile(
-          tileColor: widget.backColor,
+          tileColor: widget.itemColor,
           title: Text(
             widget.title!,
             style: TextStyle(
@@ -68,26 +82,32 @@ class _AccordionItem extends State<AccordionItem> {
                 )
               : const SizedBox(),
           visualDensity: VisualDensity.compact,
-          onTap: () {
-            if (widget.accrodionItemType == AccrodionItemType.CheckBox) {
-              setState(() {
-                checked = !checked;
-              });
-              if (checked) {
-                SimpleAccordionState.of(context)
-                    ?.selectedItems
-                    .add(AccordionData(id: widget.id, title: widget.title));
-              } else {
-                SimpleAccordionState.of(context)
-                    ?.selectedItems
-                    .removeWhere((a) => a.title == widget.title);
-              }
-              if (widget.onChange != null) {
-                widget.onChange!(
-                    checked, AccordionData(id: widget.id, title: widget.title));
-              }
-            }
-          },
+          onTap: widget.onTap ??
+              () {
+                if (widget.accrodionItemType == AccrodionItemType.CheckBox) {
+                  SimpleAccordionState state =
+                      SimpleAccordionState.of(context)!;
+                  if (state.selectedItems.length >=
+                          (state.maxSelectedCount ?? 1000) &&
+                      !checked) {
+                    return;
+                  }
+                  setState(() {
+                    checked = !checked;
+                  });
+                  if (checked) {
+                    state.selectedItems
+                        .add(AccordionData(id: widget.id, title: widget.title));
+                  } else {
+                    state.selectedItems
+                        .removeWhere((a) => a.title == widget.title);
+                  }
+                  if (widget.onChange != null) {
+                    widget.onChange!(checked,
+                        AccordionData(id: widget.id, title: widget.title));
+                  }
+                }
+              },
         );
   }
 }

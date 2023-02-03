@@ -9,10 +9,14 @@ class AccordionData {
 
 class SimpleAccordionState extends InheritedWidget {
   const SimpleAccordionState(
-      {Key? key, required this.child, required this.selectedItems})
+      {Key? key,
+      required this.child,
+      required this.selectedItems,
+      this.maxSelectedCount})
       : super(key: key, child: child);
   final Widget child;
   final List<AccordionData> selectedItems;
+  final int? maxSelectedCount;
 
   static SimpleAccordionState? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SimpleAccordionState>();

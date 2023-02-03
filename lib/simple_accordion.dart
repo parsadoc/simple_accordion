@@ -8,11 +8,22 @@ class SimpleAccordion extends StatefulWidget {
       required this.children,
       this.headerColor,
       this.itemColor,
+      this.maxSelectCount,
       this.onSelectedChanged})
       : super(key: key);
+
   final List<AccordionHeaderItem> children;
+
+  /// background color of all headers
   final Color? headerColor;
+
+  /// background color of all items
   final Color? itemColor;
+
+  /// Maximum possible select for checkbox items
+  final int? maxSelectCount;
+
+  /// when a checkbox item state changed, it returns all the seleced items
   final Function(List<AccordionData>)? onSelectedChanged;
 
   @override
@@ -25,6 +36,7 @@ class _SimpleAccordionState extends State<SimpleAccordion> {
     int i = 0;
     return SimpleAccordionState(
       selectedItems: [],
+      maxSelectedCount: widget.maxSelectCount,
       child: SingleChildScrollView(
         child: Column(
           children: widget.children

@@ -63,6 +63,7 @@ SimpleAccordion
 |children| Array of AccordionHeaderItem  |
 |headerColor| set the color of all headers background |
 |itemColor| set the color of all Items background |
+|maxSelectCount|Maximum possible selection for user|
 
 
 ### Properies of `AccordionHeaderItem`
@@ -85,7 +86,7 @@ SimpleAccordion
 |onChange|used to handle CheckBox mode value|
 |checked| initial state of Checkbox|
 |checkColor| set the color of Checkbox |
-|backColor| set the backcolor of item |
+|itemColor| set the backcolor of item |
 |accrodionItemType| set the mode of item (lable, checkbox). you can place everything in label mode|
 
 all of customizations are available in [example](https://github.com/parsadoc/simple_accordion/blob/dev/example/lib/main.dart) file.

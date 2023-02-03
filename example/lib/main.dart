@@ -21,13 +21,21 @@ class MyApp extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SimpleAccordion(
+              maxSelectCount: 2,
               children: [
                 AccordionHeaderItem(
                   title: "Colors",
                   children: [
-                    AccordionItem(title: "Blue"),
-                    AccordionItem(title: "Red"),
-                    AccordionItem(title: "Green"),
+                    AccordionItem(
+                      title: "Blue",
+                    ),
+                    AccordionItem(
+                      title: "Red",
+                    ),
+                    AccordionItem(
+                      title: "Green",
+                      onTap: () {},
+                    ),
                     AccordionItem(title: "Black"),
                   ],
                 ),
@@ -52,7 +60,7 @@ class MyApp extends StatelessWidget {
                         accrodionItemType: AccrodionItemType.CheckBox),
                     AccordionItem(
                       title: "Backgrounded Item",
-                      backColor: Colors.orange,
+                      itemColor: Colors.orange,
                     ),
                   ],
                 ),
