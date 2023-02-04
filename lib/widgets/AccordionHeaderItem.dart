@@ -10,6 +10,8 @@ class AccordionHeaderItem extends StatefulWidget {
       this.child,
       this.headerColor,
       this.index = 0,
+      this.headerTextStyle,
+      this.itemTextStyle,
       this.itemColor})
       : assert(title != null || child != null),
         super(key: key);
@@ -28,6 +30,13 @@ class AccordionHeaderItem extends StatefulWidget {
 
   /// don't use this property, it'll use to another feature
   int index;
+
+  /// if you're using title instead of child in AccordionHeaderItem
+  TextStyle? headerTextStyle;
+
+  /// if you're using title instead of child in AccordionItem
+  TextStyle? itemTextStyle;
+
   @override
   State<StatefulWidget> createState() => _AccordionHeaderItem();
 }
@@ -78,7 +87,9 @@ class _AccordionHeaderItem extends State<AccordionHeaderItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: widget.children
-                  .map((e) => e..indexGroup = widget.index)
+                  .map((e) => e
+                    ..indexGroup = widget.index
+                    ..itemTextStyle = e.itemTextStyle ?? widget.itemTextStyle)
                   .toList(),
             ),
           )

@@ -15,12 +15,16 @@ class AccordionItem extends StatefulWidget {
       this.onTap,
       this.checkColor,
       this.itemColor,
+      this.itemTextStyle,
       this.accrodionItemType = AccrodionItemType.Label})
       : assert(title != null || child != null),
         super(key: key);
   final String? id;
   final String? title;
   final Widget? child;
+
+  /// if you're using title instead of child in AccordionItem
+  TextStyle? itemTextStyle;
 
   /// hanle tap for item
   final Function()? onTap;
@@ -61,9 +65,10 @@ class _AccordionItem extends State<AccordionItem> {
           tileColor: widget.itemColor,
           title: Text(
             widget.title!,
-            style: TextStyle(
-                color: Theme.of(context).textTheme.headline1?.color,
-                fontSize: 13),
+            style: widget.itemTextStyle ??
+                TextStyle(
+                    color: Theme.of(context).textTheme.headline1?.color,
+                    fontSize: 13),
           ),
           trailing: widget.accrodionItemType == AccrodionItemType.CheckBox
               ? AnimatedCrossFade(
@@ -101,6 +106,10 @@ class _AccordionItem extends State<AccordionItem> {
                   } else {
                     state.selectedItems
                         .removeWhere((a) => a.title == widget.title);
+                  }
+
+                  if (state.onSelectedChanged != null) {
+                    state.onSelectedChanged!(state.selectedItems);
                   }
                   if (widget.onChange != null) {
                     widget.onChange!(checked,

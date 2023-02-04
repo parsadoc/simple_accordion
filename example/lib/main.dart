@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:simple_accordion/simple_accordion.dart';
-import 'package:simple_accordion/widgets/AccordionHeaderItem.dart';
-import 'package:simple_accordion/widgets/AccordionItem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +19,10 @@ class MyApp extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SimpleAccordion(
+              onSelectedChanged: (data) {
+                print(data.map((e) => e.title).join('-'));
+              },
+              itemTextStyle: TextStyle(color: Colors.red),
               maxSelectCount: 2,
               children: [
                 AccordionHeaderItem(
@@ -28,10 +30,12 @@ class MyApp extends StatelessWidget {
                   children: [
                     AccordionItem(
                       title: "Blue",
+                      itemTextStyle: TextStyle(color: Colors.blue),
+                      accrodionItemType: AccrodionItemType.CheckBox,
                     ),
                     AccordionItem(
-                      title: "Red",
-                    ),
+                        title: "Red",
+                        accrodionItemType: AccrodionItemType.CheckBox),
                     AccordionItem(
                       title: "Green",
                       onTap: () {},
