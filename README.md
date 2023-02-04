@@ -1,3 +1,4 @@
+
 # simple_accordion
 <table>
 <tr>
@@ -64,6 +65,9 @@ SimpleAccordion
 |headerColor| set the color of all headers background |
 |itemColor| set the color of all Items background |
 |maxSelectCount|Maximum possible selection for user|
+|headerTextStyle| set the style of all headers title |
+|itemTextStyle| set the style of all items title of headers|
+|onSelectedChanged|return all checked items changes|
 
 
 ### Properies of `AccordionHeaderItem`
@@ -75,6 +79,8 @@ SimpleAccordion
 |children|array of AccordionItem|
 |headerColor| set the color of header's background |
 |itemColor| set the color of all Items of current header background |
+|headerTextStyle| set the style of header's title |
+|itemTextStyle| set the style of all items title of current header|
 
 
 
@@ -88,5 +94,6 @@ SimpleAccordion
 |checkColor| set the color of Checkbox |
 |itemColor| set the backcolor of item |
 |accrodionItemType| set the mode of item (lable, checkbox). you can place everything in label mode|
+|itemTextStyle| set the style of current item|
 
 all of customizations are available in [example](https://github.com/parsadoc/simple_accordion/blob/dev/example/lib/main.dart) file.
