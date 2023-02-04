@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_accordion/model/SimpleAccordionState.dart';
 import 'package:simple_accordion/widgets/AccordionItem.dart';
 
 class AccordionHeaderItem extends StatefulWidget {
@@ -43,8 +44,10 @@ class AccordionHeaderItem extends StatefulWidget {
 
 class _AccordionHeaderItem extends State<AccordionHeaderItem> {
   bool isOpen = false;
+
   @override
   Widget build(BuildContext context) {
+    final state = SimpleAccordionState.of(context);
     final header = InkWell(
       onTap: () {
         setState(() {
@@ -61,7 +64,11 @@ class _AccordionHeaderItem extends State<AccordionHeaderItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            widget.child ?? Text(widget.title!),
+            widget.child ??
+                Text(
+                  widget.title!,
+                  style: widget.headerTextStyle,
+                ),
             Icon(
               isOpen
                   ? Icons.keyboard_arrow_up_outlined
@@ -89,6 +96,9 @@ class _AccordionHeaderItem extends State<AccordionHeaderItem> {
               children: widget.children
                   .map((e) => e
                     ..indexGroup = widget.index
+                    ..checked = e.checked ??
+                        (state?.selectedItems ?? [])
+                            .any((w) => w.title == e.title)
                     ..itemTextStyle = e.itemTextStyle ?? widget.itemTextStyle)
                   .toList(),
             ),

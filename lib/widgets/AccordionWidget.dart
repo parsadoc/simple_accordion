@@ -11,6 +11,7 @@ class SimpleAccordion extends StatefulWidget {
       this.maxSelectCount,
       this.headerTextStyle,
       this.itemTextStyle,
+      this.selectedItems,
       this.onSelectedChanged})
       : super(key: key);
 
@@ -34,6 +35,9 @@ class SimpleAccordion extends StatefulWidget {
   /// when a checkbox item state changed, it returns all the seleced items
   final Function(List<AccordionData>)? onSelectedChanged;
 
+  // set default selected items
+  final List<AccordionData>? selectedItems;
+
   @override
   State<SimpleAccordion> createState() => _SimpleAccordionState();
 }
@@ -43,7 +47,7 @@ class _SimpleAccordionState extends State<SimpleAccordion> {
   Widget build(BuildContext context) {
     int i = 0;
     return SimpleAccordionState(
-      selectedItems: [],
+      selectedItems: widget.selectedItems ?? [],
       onSelectedChanged: widget.onSelectedChanged,
       maxSelectedCount: widget.maxSelectCount,
       child: SingleChildScrollView(

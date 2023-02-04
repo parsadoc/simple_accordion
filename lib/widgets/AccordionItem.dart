@@ -10,7 +10,7 @@ class AccordionItem extends StatefulWidget {
       this.title,
       this.child,
       this.onChange,
-      this.checked = false,
+      this.checked,
       this.indexGroup = 0,
       this.onTap,
       this.checkColor,
@@ -33,7 +33,7 @@ class AccordionItem extends StatefulWidget {
   final Function(bool, AccordionData?)? onChange;
 
   /// default state of checkbox item
-  final bool checked;
+  bool? checked;
 
   /// check color of checkbox item
   final Color? checkColor;
@@ -54,7 +54,7 @@ class _AccordionItem extends State<AccordionItem> {
   late bool checked;
   @override
   void initState() {
-    checked = widget.checked;
+    checked = widget.checked ?? false;
     super.initState();
   }
 

@@ -68,6 +68,7 @@ SimpleAccordion
 |headerTextStyle| set the style of all headers title |
 |itemTextStyle| set the style of all items title of headers|
 |onSelectedChanged|return all checked items changes|
+|selectedItems|default selected items|
 
 
 ### Properies of `AccordionHeaderItem`

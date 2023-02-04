@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_accordion/model/SimpleAccordionState.dart';
 import 'package:simple_accordion/simple_accordion.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
               },
               itemTextStyle: TextStyle(color: Colors.red),
               maxSelectCount: 2,
+              selectedItems: [AccordionData(title: "Blue")],
               children: [
                 AccordionHeaderItem(
                   title: "Colors",
