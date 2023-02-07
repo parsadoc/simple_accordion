@@ -43,7 +43,13 @@ class AccordionHeaderItem extends StatefulWidget {
 }
 
 class _AccordionHeaderItem extends State<AccordionHeaderItem> {
-  bool isOpen = false;
+  late bool isOpen;
+
+  @override
+  void initState() {
+    isOpen = widget.isOpen ?? false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
