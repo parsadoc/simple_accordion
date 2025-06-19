@@ -21,17 +21,11 @@ allprojects {
     }
 }
 
-subprojects{
-    afterEvaluate {
-        android {
-            namespace 'com.parsa.simple_accordion'
-        }
-    }
-}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace 'com.parsa.simple_accordion'
     compileSdkVersion 31
 
     compileOptions {
